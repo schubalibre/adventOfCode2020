@@ -1,3 +1,5 @@
+package main.kotlin
+
 import java.io.File
 
 val <T> List<T>.tail: List<T>

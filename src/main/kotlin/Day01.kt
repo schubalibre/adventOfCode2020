@@ -1,5 +1,5 @@
-import java.lang.Exception
-import java.lang.RuntimeException
+package main.kotlin
+
 import kotlin.Pair
 import kotlin.test.assertEquals
 
@@ -12,20 +12,20 @@ fun main() {
 }
 
 fun example() {
-    val expenses = listOf<Int>(1721, 979, 366, 299, 675, 1456)
+    val expenses = listOf(1721, 979, 366, 299, 675, 1456)
 
     val entries = find2020Pair(expenses.tail, expenses.head)
 
     assertEquals(Pair(1721,299), entries)
 
-    println("example: " + entries.first * entries.second)
+    println("main.kotlin.example: " + entries.first * entries.second)
 
 
     val triple = find2020Triple(expenses.tail, expenses.head)
 
     assertEquals(Triple(979,366,675), triple)
 
-    println("example: " + triple.first * triple.second * triple.third)
+    println("main.kotlin.example: " + triple.first * triple.second * triple.third)
 
 
 }
@@ -36,11 +36,11 @@ fun exercise() {
 
     val entries = find2020Pair(expenses.tail, expenses.head)
 
-    println("exercise: " + entries.first * entries.second)
+    println("main.kotlin.exercise: " + entries.first * entries.second)
 
     val triple = find2020Triple(expenses.tail, expenses.head)
 
-    println("example: " + triple.first * triple.second * triple.third)
+    println("main.kotlin.example: " + triple.first * triple.second * triple.third)
 }
 
 fun find2020Pair(expenses: List<Int>, head: Int): Pair<Int,Int> {

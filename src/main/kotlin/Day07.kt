@@ -1,5 +1,7 @@
+package main.kotlin
+
 /**
- * Thanks to https://github.com/FlorianCassayre/AdventOfCode-2020/blob/master/src/main/scala/adventofcode/solutions/Day07.scala
+ * Thanks to https://github.com/FlorianCassayre/AdventOfCode-2020/blob/master/src/main.kotlin.main/scala/adventofcode/solutions/Day07.scala
  */
 fun main() {
     example7()

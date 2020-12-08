@@ -1,5 +1,7 @@
+package main.kotlin
+
 fun main() {
-    //example8()
+    //main.kotlin.example8()
 
     exercise8()
 }
@@ -23,7 +25,7 @@ fun exercise8() {
         }
 
         if(replacement != null) {
-            val replaceableInstructions = instructions.toMutableList() // !!!!  not save -> instructions as MutableList<Instruction>) !!!!!!!!
+            val replaceableInstructions = instructions.toMutableList() // !!!!  not save -> main.kotlin.getInstructions as MutableList<main.kotlin.Instruction>) !!!!!!!!
             replaceableInstructions[i] = replacement
             val possibleCount = countAcc(
                 instructions = replaceableInstructions
@@ -97,3 +99,6 @@ fun countAcc(
         }
     }
 }
+
+
+

@@ -1,5 +1,7 @@
+package main.kotlin
+
 fun main() {
-    //example3()
+    //main.kotlin.example3()
     exercise3()
 }
 

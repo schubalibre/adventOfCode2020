@@ -1,11 +1,13 @@
+package main.kotlin
+
 fun main() {
-    //example6()
+    //main.kotlin.example6()
     exercise6()
 }
 
 fun exercise6() {
     val answers = readStringFileByLine("src/resources/input06.txt")
-    //println(countAnswers(answers))
+    //println(main.kotlin.countAnswers(answers))
     println(countSameAnswersEachGroup(answers))
 }
 
@@ -28,7 +30,7 @@ fun example6() {
         "b"
     )
 
-    //println(countAnswers(answers))
+    //println(main.kotlin.countAnswers(answers))
     println(countSameAnswersEachGroup(answers))
 
 }

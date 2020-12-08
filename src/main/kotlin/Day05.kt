@@ -1,8 +1,10 @@
+package main.kotlin
+
 import kotlin.math.floor
 import kotlin.test.assertEquals
 
 fun main() {
-    //example5()
+    //main.kotlin.example5()
     exercise5()
 }
 
