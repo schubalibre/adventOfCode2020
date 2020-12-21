@@ -1,71 +1,31 @@
 package main.kotlin
 
-fun main() {
-    //main.kotlin.example3()
-    exercise3()
-}
 
-fun exercise3() {
-    val map = readStringFileByLine("src/resources/input03.txt")
+class Day03(list: List<String>) {
 
-    listOf(1, 3, 5, 7).forEach { countTrees(map, dimension = 31, steps = it) }
+    private val lines = list.map { it.toCharArray() }
 
-    countTrees(map, dimension = 31, skip = 1)
-}
+    private val width = lines.head.size
+    private val height = lines.size - 1
 
-fun example3() {
-    val map = listOf(
-        "..##.......",
-        "#...#...#..",
-        ".#....#..#.",
-        "..#.#...#.#",
-        ".#...##..#.",
-        "..#.##.....",
-        ".#.#.#....#",
-        ".#........#",
-        "#.##...#...",
-        "#...##....#",
-        ".#..#...#.#"
+    private val slope = Pair(3, 1)
+
+    private val allSlopes = listOf(
+        Pair(1, 1), Pair(3, 1), Pair(5, 1), Pair(7, 1), Pair(1, 2)
     )
 
-    listOf(1, 3, 5, 7).forEach {
+    private fun traverse(a: Int, b: Int) = (0..height / b)
+        .count { i ->
+            lines[i * b][(a * i) % width] == '#'
+        }
 
-        countTrees(map, dimension = 11, steps = it)
-    }
+    fun solvePart1() = traverse(slope.first, slope.second)
 
-    countTrees(map, dimension = 11, skip = 1)
 
+    fun solvePart2() = allSlopes.map{
+        traverse(it.first, it.second)
+    }.reduce { acc, i -> acc * i }
 
 }
 
-fun countTrees(map: List<String>, dimension: Int = 11, steps: Int = 1, skip: Int = 0): Int {
 
-    var step = 0
-
-    var counter = 0
-
-    var line = 0
-
-    map.forEachIndexed { index, it ->
-
-        if (skip in 1..line) {
-            line = 0
-            return@forEachIndexed
-        }
-
-        val level = it.toCharArray()
-
-        if (level[step % dimension] == '#') {
-            counter += 1
-        }
-
-        step += steps
-
-
-        line += 1
-    }
-
-    println("counter: $counter")
-
-    return counter
-}
