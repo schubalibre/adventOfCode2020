@@ -1,77 +1,57 @@
 package main.kotlin
 
-import kotlin.Pair
-import kotlin.test.assertEquals
 
-fun main() {
+class Day01(list: List<Int>) {
 
-    example()
+    private val expenses = list.sorted()
 
-    exercise()
+    fun solvePart1(): Int {
 
-}
+        val entries = find2020Pair(expenses.tail, expenses.head)
 
-fun example() {
-    val expenses = listOf(1721, 979, 366, 299, 675, 1456)
+        return entries.first * entries.second
+    }
 
-    val entries = find2020Pair(expenses.tail, expenses.head)
+    fun solvePart2(): Int {
+        val triple = find2020Triple(expenses.tail, expenses.head)
 
-    assertEquals(Pair(1721,299), entries)
-
-    println("main.kotlin.example: " + entries.first * entries.second)
-
-
-    val triple = find2020Triple(expenses.tail, expenses.head)
-
-    assertEquals(Triple(979,366,675), triple)
-
-    println("main.kotlin.example: " + triple.first * triple.second * triple.third)
-
-
-}
-
-fun exercise() {
-
-    val expenses = readIntFileByLine("src/resources/input01.txt")
-
-    val entries = find2020Pair(expenses.tail, expenses.head)
-
-    println("main.kotlin.exercise: " + entries.first * entries.second)
-
-    val triple = find2020Triple(expenses.tail, expenses.head)
-
-    println("main.kotlin.example: " + triple.first * triple.second * triple.third)
-}
-
-fun find2020Pair(expenses: List<Int>, head: Int): Pair<Int,Int> {
-
-     val entity = expenses.find{ head + it == 2020}
-
-    entity?.let {
-        return Pair(head, entity)
+        return triple.first * triple.second * triple.third
     }
 
 
-    return find2020Pair(expenses.tail, expenses.head)
+    private fun find2020Pair(expenses: List<Int>, head: Int): Pair<Int, Int> {
 
-}
+        val entity = expenses.find { head + it == 2020 }
 
-fun find2020Triple(expenses: List<Int>, head: Int): Triple<Int,Int,Int> {
-
-    val entity: Triple<Int,Int,Int>? = expenses.map { head2 ->
-        val entity = expenses.find { it != head2 && head + head2 + it == 2020 }
         entity?.let {
-            return Triple(head, head2, entity)
+            return Pair(head, entity)
         }
-    }.firstOrNull()
 
 
-    entity?.let { it ->
-        return it
+        return find2020Pair(expenses.tail, expenses.head)
+
     }
 
-    return find2020Triple(
+    private fun find2020Triple(expenses: List<Int>, head: Int): Triple<Int, Int, Int> {
+
+        val entity: Triple<Int, Int, Int>? = expenses.map { head2 ->
+            val entity = expenses.find { it != head2 && head + head2 + it == 2020 }
+            entity?.let {
+                return Triple(head, head2, entity)
+            }
+        }.firstOrNull()
+
+
+        entity?.let { it ->
+            return it
+        }
+
+        return find2020Triple(
             expenses.tail,
             expenses.head
         )
+    }
 }
+
+
+
